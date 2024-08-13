@@ -620,3 +620,25 @@ describe("extending presets", () => {
     });
   });
 });
+
+describe("isServer is correctly exposed", () => {
+  test("for server", () => {
+    const env = createEnv({
+      server: {},
+      runtimeEnv: {},
+      isServer: true,
+    });
+
+    expect(env.isServer).toBe(true);
+  });
+
+  test("for client", () => {
+    const env = createEnv({
+      server: {},
+      runtimeEnv: {},
+      isServer: false,
+    });
+
+    expect(env.isServer).toBe(false);
+  });
+});

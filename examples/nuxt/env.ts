@@ -9,3 +9,5 @@ export const env = createEnv({
     NUXT_PUBLIC_GREETING: z.string(),
   },
 });
+
+const isServer = env.isServer;

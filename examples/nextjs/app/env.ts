@@ -18,3 +18,5 @@ export const env = createEnv({
   },
   extends: [vercel()],
 });
+
+const isServer = env.isServer;

@@ -15,3 +15,5 @@ export const env = createEnv({
   skipValidation: import.meta.env.SKIP_ENV_VALIDATION === "development",
   clientPrefix: "PUBLIC_",
 });
+
+const isServer = env.isServer;

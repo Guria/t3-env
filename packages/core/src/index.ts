@@ -209,7 +209,7 @@ export type CreateEnv<
       TypeOf<ZodObject<TClient>> &
       TypeOf<ZodObject<TShared>> &
       UnReadonlyObject<Reduce<TExtends>>
-  >
+  > & { isServer: boolean }
 >;
 
 export function createEnv<
@@ -294,6 +294,7 @@ export function createEnv<
       if (typeof prop !== "string") return undefined;
       if (ignoreProp(prop)) return undefined;
       if (!isValidServerAccess(prop)) return onInvalidAccess(prop);
+      if (prop === "isServer") return isServer;
       return Reflect.get(target, prop);
     },
     // Maybe reconsider this in the future:
